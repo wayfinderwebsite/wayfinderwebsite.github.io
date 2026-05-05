@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Wayfinder Real Estate</title>
+<meta name="description" content="Whether you're exploring an idea or ready to move, we'd like to hear about your project." />
+<link rel="icon" href="assets/logos/peaks-ochre.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/site.css?v=1777991163357" />
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info-block { padding-top: 14px; }
+  .contact-info-block h4 { font-family: var(--font-sans); font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color: var(--color-forest); margin: 28px 0 10px; }
+  .contact-info-block p, .contact-info-block a { font-size: 15px; color: var(--color-slate); line-height: 1.6; }
+  .contact-info-block .big { font-family: var(--font-serif); font-size: clamp(22px, 2.4vw, 28px); color: var(--color-ink); line-height: 1.3; }
+  .person-row { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; padding: 14px 0; border-top: 1px solid rgba(24,35,49,0.1); }
+  .person-row img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background: var(--color-warm-sand); }
+  .person-row .name { font-family: var(--font-serif); font-size: 18px; color: var(--color-ink); }
+  .person-row .meta { font-size: 12px; color: var(--color-sage); letter-spacing: 0.02em; }
+  .person-row .meta a { color: var(--color-ochre); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 0.5px; }
+  .thanks { display:none; padding: 20px; background: rgba(46,125,91,0.1); border: 1px solid rgba(46,125,91,0.3); color: var(--color-success); font-size: 14px; margin-bottom: 18px; }
+  .thanks.show { display: block; }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('assets/landscape/catalina.jpg');"></div>
+  <div class="hero-inner">
+    <span class="eyebrow ivory" style="margin-bottom:22px;">Contact</span>
+    <h1 class="display" style="max-width: 22ch;">Let's talk about <span class="italic-umber">your project.</span></h1>
+    <p class="lead" style="color: rgba(247,244,235,0.9); margin-top:22px; max-width: 60ch;">
+      Whether you're exploring an idea or ready to move, we'd like to hear from you.
+    </p>
+  </div>
+</section>
+
+<!-- FORM + INFO -->
+<section class="section bg-canvas">
+  <div class="container">
+    <div class="contact-grid">
+
+      <form class="form-card" id="contactForm" novalidate>
+        <div class="thanks" id="thanks">
+          Thank you — we've received your note and will be in touch shortly.
+        </div>
+
+        <span class="eyebrow" style="margin-bottom: 18px; display:inline-flex;">Send a Note</span>
+        <h2 class="h2" style="margin-bottom: 22px;">A few details to get started</h2>
+
+        <div class="form-row">
+          <div class="form-row-2" style="display:grid; gap:18px;">
+            <label>Name
+              <input type="text" name="name" required />
+            </label>
+            <label>Email
+              <input type="email" name="email" required />
+            </label>
+          </div>
+          <div class="form-row-2" style="display:grid; gap:18px;">
+            <label>Phone <span style="font-weight:400; color:var(--color-sage); text-transform:none; letter-spacing:normal;">(optional)</span>
+              <input type="tel" name="phone" />
+            </label>
+            <label>Organization <span style="font-weight:400; color:var(--color-sage); text-transform:none; letter-spacing:normal;">(optional)</span>
+              <input type="text" name="org" />
+            </label>
+          </div>
+          <label>Tell us about your project or inquiry
+            <textarea name="message" required placeholder="A few sentences is plenty — land location, stage of the project, what you're looking for in a partner."></textarea>
+          </label>
+        </div>
+
+        <div style="margin-top: 24px; display:flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <p style="font-size:12px; color:var(--color-sage); margin:0; max-width: 40ch;">
+          </p>
+          <button type="submit" class="btn btn-primary">Send Message <span class="arr">→</span></button>
+        </div>
+      </form>
+
+      <aside class="contact-info-block">
+        <span class="eyebrow teal">Office</span>
+        <p class="big" style="margin-top: 12px;">5608 Parkcrest Drive<br/>Suite 350<br/>Austin, TX 78731</p>
+        <p style="margin-top: 8px;"><a class="link" href="tel:5127462720">(512) 746-2720</a></p>
+
+        <h4>General Inquiries</h4>
+        <p><a class="link" href="mailto:info@wayfinder-re.com">info@wayfinder-re.com</a></p>
+
+        <h4 style="margin-top: 36px;">Direct Contact</h4>
+
+        <div class="person-row">
+          <img src="assets/people/chris.jpg" alt="Chris Sipes" />
+          <div>
+            <div class="name">Chris Sipes</div>
+            <div class="meta">Co-Founder · <a href="mailto:chris@wayfinder-re.com">chris@wayfinder-re.com</a></div>
+          </div>
+        </div>
+        <div class="person-row">
+          <img src="assets/people/mac.jpg" alt="Mac McElwrath" />
+          <div>
+            <div class="name">Mac McElwrath</div>
+            <div class="meta">Co-Founder · <a href="mailto:mac@wayfinder-re.com">mac@wayfinder-re.com</a></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Simple map placeholder block -->
+<section class="section-tight bg-sand">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Visit Us</span>
+        <h2 class="h2 mt-s">Central Austin</h2>
+        <p style="font-size: 15px; color: var(--color-slate); line-height: 1.7; margin-top: 14px;">
+          Our office sits in Central Austin, just off MoPac and 2222 — an easy stop whether you're coming from downtown, the Domain, or the airport.
+        </p>
+      </div>
+      <a href="https://maps.google.com/?q=5608+Parkcrest+Drive+%23350,+Austin,+TX+78731" target="_blank" rel="noopener" style="aspect-ratio: 16/10; position: relative; border: 1px solid rgba(24,35,49,0.1); display:block; overflow:hidden; text-decoration:none; background: var(--color-warm-sand);">
+        <iframe
+          src="https://www.google.com/maps?q=5608+Parkcrest+Drive,+Austin,+TX+78731&output=embed"
+          style="position:absolute; inset:0; width:100%; height:100%; border:0; pointer-events:none; filter: grayscale(1) sepia(0.55) hue-rotate(-12deg) saturate(0.85) contrast(0.95) brightness(1.02);"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Map of 5608 Parkcrest Drive #350, Austin, TX 78731"
+        ></iframe>
+        <div aria-hidden="true" style="position:absolute; inset:0; background: linear-gradient(135deg, rgba(225,218,200,0.18), rgba(84,55,36,0.10)); mix-blend-mode: multiply; pointer-events:none;"></div>
+        <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; display:grid; place-items:center;">
+          <div style="position:relative; width:14px; height:14px; background: var(--color-ochre); border-radius:50%; box-shadow: 0 0 0 4px rgba(247,244,235,0.95), 0 0 0 5px rgba(24,35,49,0.15), 0 6px 14px rgba(24,35,49,0.25);"></div>
+        </div>
+        <div style="position:absolute; left:16px; bottom:16px; background:var(--color-warm-white); padding:10px 14px; font-family:var(--font-sans); font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--color-ink); border:1px solid rgba(24,35,49,0.1); display:flex; align-items:center; gap:8px;">
+          <span style="display:inline-block; width:8px; height:8px; background:var(--color-ochre); border-radius:50%;"></span>
+          Open in Maps →
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/partials.js?v=1776968273632"></script>
+<script>injectChrome('contact');</script>
+<script src="assets/js/site.js?v=1777990945777"></script>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const name = (data.get('name') || '').trim();
+    const email = (data.get('email') || '').trim();
+    const phone = (data.get('phone') || '').trim();
+    const org = (data.get('org') || '').trim();
+    const message = (data.get('message') || '').trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+
+    const subject = `Wayfinder inquiry from ${name}${org ? ' (' + org + ')' : ''}`;
+    const body =
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      (phone ? `Phone: ${phone}\n` : '') +
+      (org ? `Organization: ${org}\n` : '') +
+      `\n---\n\n${message}\n`;
+
+    const mailtoLink =
+      `mailto:mac@wayfinder-re.com` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+
+    const t = document.getElementById('thanks');
+    t.textContent = "Thanks — your email client should be opening with your message ready to send. Just hit send and it'll come straight to Mac. If your mail app didn't open, you can email Mac directly at mac@wayfinder-re.com.";
+    t.classList.add('show');
+    form.reset();
+    t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>
