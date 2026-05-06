@@ -66,6 +66,60 @@
   }
   .leaflet-tooltip-top.deal-tooltip::before { border-top-color: var(--color-ink); }
   .leaflet-tooltip-bottom.deal-tooltip::before { border-bottom-color: var(--color-ink); }
+
+  /* Legend (extracted from inline styles for media-query overrides) */
+  .map-legend {
+    display: flex; flex-wrap: wrap; gap: 28px;
+    align-items: center;
+    margin-top: 18px;
+    font-size: 12px;
+    color: var(--color-slate);
+    letter-spacing: 0.04em;
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: 8px; }
+  .legend-swatch {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 1.5px solid var(--color-warm-white);
+    box-shadow: 0 0 0 1px rgba(24,35,49,0.2);
+  }
+  .legend-caption {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--color-slate);
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  /* ---------- Mobile (≤720px): restructure the map UI ---------- */
+  @media (max-width: 720px) {
+    /* Filter row: tighter chips, toggle drops to its own full-width row */
+    .map-filters { gap: 6px; padding: 14px 16px; }
+    .chip { padding: 7px 12px; font-size: 11.5px; }
+    .toggle-group {
+      margin-left: 0;
+      width: 100%;
+      margin-top: 4px;
+    }
+    .toggle-group button {
+      flex: 1;
+      padding: 8px 10px;
+      letter-spacing: 0.08em;
+    }
+
+    /* Counter row: tighter spacing */
+    .map-summary { gap: 14px; padding: 14px 16px; font-size: 12px; }
+
+    /* Legend: 2-column grid; hide italic caption per Option A */
+    .map-legend {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+    }
+    .legend-caption { display: none; }
+
+    /* Scroll-zoom hint is desktop-only — pinch-zoom works regardless on touch */
+    .map-hint { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -122,12 +176,12 @@
     </div>
 
     <!-- Legend -->
-    <div style="display:flex; gap:28px; flex-wrap:wrap; margin-top: 18px; font-size: 12px; color: var(--color-slate); letter-spacing: 0.04em;">
-      <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:10px; height:10px; border-radius:50%; background:var(--color-ochre); border:1.5px solid var(--color-warm-white); box-shadow: 0 0 0 1px rgba(24,35,49,0.2);"></span> Wayfinder Project</span>
-      <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:10px; height:10px; border-radius:50%; background:var(--color-deep-teal); border:1.5px solid var(--color-warm-white); box-shadow: 0 0 0 1px rgba(24,35,49,0.2);"></span> Joint Venture</span>
-      <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:10px; height:10px; border-radius:50%; background:var(--color-sage); border:1.5px solid var(--color-warm-white); box-shadow: 0 0 0 1px rgba(24,35,49,0.2);"></span> Rezone</span>
-      <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:10px; height:10px; border-radius:50%; background:var(--color-umber); border:1.5px solid var(--color-warm-white); box-shadow: 0 0 0 1px rgba(24,35,49,0.2);"></span> Award Winner</span>
-      <span style="margin-left:auto; font-size:11px; color:var(--color-slate); opacity:0.7; font-style:italic;">Projects can hold multiple categories — the ring segments stack.</span>
+    <div class="map-legend">
+      <span class="legend-item"><span class="legend-swatch" style="background:var(--color-ochre);"></span> Wayfinder Project</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:var(--color-deep-teal);"></span> Joint Venture</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:var(--color-sage);"></span> Rezone</span>
+      <span class="legend-item"><span class="legend-swatch" style="background:var(--color-umber);"></span> Award Winner</span>
+      <span class="legend-caption">Projects can hold multiple categories — the ring segments stack.</span>
     </div>
   </div>
 </section>
