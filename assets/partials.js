@@ -52,9 +52,6 @@ function injectChrome(active) {
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:info@wayfinder-re.com">info@wayfinder-re.com</a></li>
-            <li style="margin-top:8px; color:rgba(247,244,235,0.5); font-size:11px; letter-spacing:0.14em; text-transform:uppercase;">Direct</li>
-            <li><a href="mailto:chris@wayfinder-re.com">Chris Sipes</a></li>
-            <li><a href="mailto:mac@wayfinder-re.com">Mac McElwrath</a></li>
           </ul>
         </div>
       </div>
