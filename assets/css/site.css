@@ -335,9 +335,9 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .nav-burger { display: none; background: none; border: 0; color: var(--color-warm-white); cursor: pointer; padding: 6px; }
 
 @media (max-width: 860px) {
-  .nav-inner { padding-right: 4px; }
+  .nav-inner { gap: 0; }
   .nav-links, .nav-cta { display: none; }
-  .nav-burger { display: inline-flex; }
+  .nav-burger { display: inline-flex; padding-right: 0; }
   .nav.open .nav-links {
     display: flex;
     flex-direction: column;
