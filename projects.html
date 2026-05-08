@@ -67,6 +67,51 @@
   .leaflet-tooltip-top.deal-tooltip::before { border-top-color: var(--color-ink); }
   .leaflet-tooltip-bottom.deal-tooltip::before { border-bottom-color: var(--color-ink); }
 
+  /* Collapsible map attribution — replaces Leaflet's default visible row */
+  .attrib-toggle.leaflet-control {
+    position: relative;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0 8px 8px 0;
+  }
+  .attrib-toggle-btn {
+    width: 24px; height: 24px;
+    padding: 0; line-height: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(24,35,49,0.16);
+    background: rgba(247,244,235,0.94);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(24,35,49,0.08);
+    transition: background 160ms ease;
+  }
+  .attrib-toggle-btn:hover,
+  .attrib-toggle-btn[aria-expanded="true"] { background: #fff; }
+  .attrib-toggle-panel {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 0;
+    background: rgba(247,244,235,0.96);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(24,35,49,0.12);
+    box-shadow: 0 4px 14px rgba(24,35,49,0.1);
+    white-space: nowrap;
+  }
+  .attrib-toggle-panel a {
+    color: var(--color-slate);
+    text-decoration: underline;
+  }
+  .attrib-toggle-panel a:hover { color: var(--color-ink); }
+
   /* Legend (extracted from inline styles for media-query overrides) */
   .map-legend {
     display: flex; flex-wrap: wrap; gap: 28px;
@@ -437,14 +482,48 @@
   const map = L.map('leafletMap', {
     scrollWheelZoom: false,
     zoomControl: true,
-    attributionControl: true,
+    attributionControl: false,
   });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 19,
     detectRetina: true,
   }).addTo(map);
+
+  // Collapsible attribution: a small "©" button that expands to show
+  // the OSM/CARTO/Leaflet credits on click. Keeps the map clean while
+  // remaining license-compliant.
+  const AttribToggle = L.Control.extend({
+    options: { position: 'bottomright' },
+    onAdd: function () {
+      const wrap = L.DomUtil.create('div', 'leaflet-control attrib-toggle');
+      wrap.innerHTML =
+        '<div class="attrib-toggle-panel" hidden>' +
+          '<a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> | ' +
+          '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> ' +
+          '&copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>' +
+        '</div>' +
+        '<button class="attrib-toggle-btn" type="button" aria-expanded="false" aria-label="Map attribution">&copy;</button>';
+      L.DomEvent.disableClickPropagation(wrap);
+      L.DomEvent.disableScrollPropagation(wrap);
+      const btn = wrap.querySelector('.attrib-toggle-btn');
+      const panel = wrap.querySelector('.attrib-toggle-panel');
+      const setOpen = (open) => {
+        if (open) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      btn.addEventListener('click', () => setOpen(panel.hasAttribute('hidden')));
+      document.addEventListener('click', (e) => {
+        if (!wrap.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+      });
+      return wrap;
+    },
+  });
+  new AttribToggle().addTo(map);
 
   const mapHint = document.getElementById('mapHint');
   function activateScrollZoom() {
