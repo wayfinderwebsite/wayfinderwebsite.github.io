@@ -1,4 +1,4 @@
-// Injects shared nav + footer. Call injectChrome('home' | 'services' | 'projects' | 'team' | 'contact').
+// Injects shared nav + footer. Call injectChrome('home' | 'expertise' | 'projects' | 'team' | 'contact').
 function injectChrome(active) {
   const nav = `
   <header class="nav" role="banner">
@@ -12,7 +12,7 @@ function injectChrome(active) {
       <nav aria-label="Primary">
         <ul class="nav-links">
           <li><a href="index.html" ${active==='home'?'class="active"':''}>Home</a></li>
-          <li><a href="services.html" ${active==='services'?'class="active"':''}>Services</a></li>
+          <li><a href="expertise.html" ${active==='expertise'?'class="active"':''}>Expertise</a></li>
           <li><a href="projects.html" ${active==='projects'?'class="active"':''}>Projects</a></li>
           <li><a href="team.html" ${active==='team'?'class="active"':''}>Team</a></li>
           <li><a href="contact.html" ${active==='contact'?'class="active"':''}>Contact</a></li>
@@ -33,7 +33,7 @@ function injectChrome(active) {
           <h4>Explore</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="expertise.html">Expertise</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="contact.html">Contact</a></li>
